@@ -1,0 +1,7 @@
+Name: Abhinav Singh
+Email: <provided separately>
+OS: Ubuntu 24.04.2 LTS (container image)
+CPU: Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz (3 vCPUs)
+RAM: 17 GiB available
+Language: Python 3.11.12
+Notes: Solver relies only on Python standard library; no external dependencies required.

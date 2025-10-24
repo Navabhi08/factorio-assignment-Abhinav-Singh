@@ -3,8 +3,13 @@ from __future__ import annotations
 
 import json
 import sys
+from pathlib import Path
 
-from .core import solve_from_json
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from factory.core import solve_from_json
+else:  # pragma: no cover - exercised via module execution
+    from .core import solve_from_json
 
 
 def main() -> None:

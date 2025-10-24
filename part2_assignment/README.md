@@ -14,22 +14,22 @@ is simple to run in constrained environments.
 
 ## Solution architecture
 
-### Shared linear optimisation helpers
+### Linear optimisation helpers
 
-`common/lp.py` provides a thin wrapper around the standard library `fractions`
-and `itertools` modules to build rational matrices for the linear programs used
-by both solvers.  It exposes utilities to:
+The linear-programming routines now live alongside the factory solver in
+`factory/main.py`.  Keeping everything in a single module simplifies the folder
+layout while still exposing the same utilities to:
 
-* Construct coefficient matrices in a deterministic recipe or graph order.
+* Construct coefficient matrices in a deterministic recipe order.
 * Invoke a simplex-style feasibility search implemented in pure Python.
 * Recover primal and dual certificates that are later formatted as JSON.
 
-Both the factory and belts solvers depend on these helpers to keep numerical
-behaviour consistent across modules.
+The belts solver retains its standalone implementation and no longer depends on
+a separate helper package.
 
 ### Factory solver
 
-`factory/core.py` models the production network using recipe and item sets that
+`factory/main.py` models the production network using recipe and item sets that
 are pre-sorted to guarantee repeatable output.  The solver assembles a linear
 program with the following constraints:
 
